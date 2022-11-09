@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6132562627131543499}
   - component: {fileID: 6132562627131543496}
   - component: {fileID: 6132562627131543497}
+  - component: {fileID: 7269902739141941926}
+  - component: {fileID: 904666529096612656}
   m_Layer: 0
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -74,6 +76,30 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpHeight: 1
+--- !u!114 &7269902739141941926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132562627131543494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc0c2eb32e47984a840a294f360ad83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &904666529096612656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132562627131543494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdc26b930aaa8b4f8a97f06a0c4cd3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6132562627244372208
 GameObject:
   m_ObjectHideFlags: 0
