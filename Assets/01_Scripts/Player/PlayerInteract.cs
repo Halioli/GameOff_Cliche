@@ -28,7 +28,8 @@ public class PlayerInteract : MonoBehaviour
 
     private void DoInteraction(GameObject interactedObject)
     {
-        Debug.Log(interactedObject);
         // Call interact logic
+        if (interactedObject.GetComponent<InteractMaster>() != null)
+            interactedObject.GetComponent<InteractMaster>().DoInteraction();
     }
 }
