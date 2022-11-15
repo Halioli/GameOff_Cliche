@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private HealthSystem healthSystem;
+    [SerializeField] PlayerInventory inventory;
+
+    private HealthSystem healthSystem; // change
 
     void Start()
     {
@@ -28,4 +30,6 @@ public class PlayerManager : MonoBehaviour
             healthSystem.ReceiveHealth(5);
         }
     }
+
+    public PlayerInventory GetPlayerInventory() { return inventory; }
 }

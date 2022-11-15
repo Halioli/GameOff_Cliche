@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractMaster : MonoBehaviour
 {
-    virtual public void DoInteraction()
+    virtual public void DoInteraction(PlayerManager playerManager)
     {
         Debug.Log("Interacted");
     }

@@ -18,7 +18,7 @@ public class InteractTree : InteractMaster
         
     }
 
-    public override void DoInteraction()
+    public override void DoInteraction(PlayerManager playerManager)
     {
         //base.DoInteraction();
 

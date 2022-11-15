@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] LayerMask layerMask;
+    [SerializeField] PlayerManager playerManager;
 
     private RaycastHit hit;
 
@@ -30,6 +31,6 @@ public class PlayerInteract : MonoBehaviour
     {
         // Call interact logic
         if (interactedObject.GetComponent<InteractMaster>() != null)
-            interactedObject.GetComponent<InteractMaster>().DoInteraction();
+            interactedObject.GetComponent<InteractMaster>().DoInteraction(playerManager);
     }
 }
