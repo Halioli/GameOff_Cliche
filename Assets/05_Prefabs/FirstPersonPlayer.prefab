@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 9156100540303576989}
+  movement: {fileID: 6132562627131543497}
 --- !u!114 &904666529096612656
 MonoBehaviour:
   m_ObjectHideFlags: 0

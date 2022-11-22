@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TutorialMessages : MonoBehaviour
 {
+    [SerializeField] bool doOnTriggerEnter = false;
+
     public enum MessegeEventType { NONE, TUTORIAL, CAMERA };
 
     public struct ChatEventData
@@ -33,16 +35,17 @@ public class TutorialMessages : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && doOnTriggerEnter)
         {
             SendMessage();
         }
     }
 
-    protected virtual void SendMessage()
+    public void SendMessage()
     {
-        tutorialOpened = true;
+        if (tutorialOpened) { return; }
 
+        tutorialOpened = true;
 
         // Send Action
         if (OnNewMessage != null)
@@ -67,8 +70,6 @@ public class TutorialMessages : MonoBehaviour
         }
     }
 
-
-
     protected bool IsTutorialFinished()
     {
         //return false;
@@ -80,6 +81,4 @@ public class TutorialMessages : MonoBehaviour
 
         return false;
     }
-
-
 }

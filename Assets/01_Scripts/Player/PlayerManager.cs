@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] PlayerInventory inventory;
+    [SerializeField] PlayerMovement movement;
 
     private HealthSystem healthSystem; // change
 
@@ -32,4 +33,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     public PlayerInventory GetPlayerInventory() { return inventory; }
+
+    public void SetCanMove(bool _value) { movement.SetCanMove(_value); }
+
+    public void SetCanJump(bool _value) { movement.SetCanJump(_value); }
 }

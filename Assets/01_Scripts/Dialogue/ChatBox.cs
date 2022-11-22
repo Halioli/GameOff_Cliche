@@ -22,6 +22,7 @@ public class ChatBox : MonoBehaviour
     private TutorialMessages.MessegeEventType eventType;
     private int eventID;
     private AudioSource audioSource;
+    private bool didInitialText = false;
 
     public delegate void ChatNextInput();
     public static event ChatNextInput OnChatNextInput;
@@ -34,8 +35,9 @@ public class ChatBox : MonoBehaviour
     public static event FinishedChatMessage OnFinishChatMessage;
     public bool allTextShown;
     public int currentTextNum = 0;
-    public TextMeshProUGUI mssgText;
-    public Transform buttonTransform;
+    [SerializeField] TextMeshProUGUI mssgText;
+    [SerializeField] Transform buttonTransform;
+    [SerializeField] PlayerManager playerManager;
 
     void Start()
     {
@@ -75,6 +77,8 @@ public class ChatBox : MonoBehaviour
 
     private void ShowChatBox(string[] mssg, TutorialMessages.ChatEventData chatEventData)
     {
+        didInitialText = false;
+
         //ParseText(mssg);
         textToShow = new List<string>(mssg);
 
@@ -96,12 +100,7 @@ public class ChatBox : MonoBehaviour
 
     private void NextText()
     {
-        if (!allTextShown)
-        {
-            StopCoroutine("ShowText");
-            allTextShown = true;
-        }
-        else
+        if (!didInitialText)
         {
             if (textToShow.Count > currentTextNum)
             {
@@ -110,10 +109,10 @@ public class ChatBox : MonoBehaviour
 
                 DisplayText();
 
-                if (currentTextNum == eventIndex)
+                /*if (currentTextNum == eventIndex)
                 {
                     InvokeChatEvents();
-                }
+                }*/
 
                 currentTextNum++;
             }
@@ -125,16 +124,50 @@ public class ChatBox : MonoBehaviour
 
                 HideChat();
             }
+            didInitialText = true;
+        }
+        else
+        {
+            if (!allTextShown)
+            {
+                StopCoroutine("ShowText");
+                allTextShown = true;
+            }
+            else
+            {
+                if (textToShow.Count > currentTextNum)
+                {
+                    allTextShown = false;
+                    fullMssgText = textToShow[currentTextNum];
+
+                    DisplayText();
+
+                    /*if (currentTextNum == eventIndex)
+                    {
+                        InvokeChatEvents();
+                    }*/
+
+                    currentTextNum++;
+                }
+                else
+                {
+                    // Send Action
+                    if (OnFinishChatMessage != null)
+                        OnFinishChatMessage();
+
+                    HideChat();
+                }
+            }
         }
     }
 
 
-    private void InvokeChatEvents()
+    /*private void InvokeChatEvents()
     {
         switch (this.eventType)
         {
             case TutorialMessages.MessegeEventType.TUTORIAL:
-                if (OnChatTutorialEvent != null) OnChatTutorialEvent(eventID);
+                if (OnChatTutorialEvent != null) { OnChatTutorialEvent(eventID); }
                 break;
 
             case TutorialMessages.MessegeEventType.CAMERA:
@@ -144,8 +177,7 @@ public class ChatBox : MonoBehaviour
             default:
                 break;
         }
-    }
-
+    }*/
 
     private void HideChat()
     {
@@ -155,6 +187,7 @@ public class ChatBox : MonoBehaviour
 
     private void ResetValues()
     {
+        playerManager.SetCanMove(true);
         textToShow.Clear();
         currentTextNum = 0;
         TutorialMessages.tutorialOpened = false;
@@ -206,6 +239,7 @@ public class ChatBox : MonoBehaviour
         allTextShown = false;
         mssgText.text = fullMssgText;
         mssgText.maxVisibleCharacters = 0;
+
         for (int i = 0; i < fullMssgText.Length; i++)
         {
             mssgText.maxVisibleCharacters++;
