@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialMessages: {fileID: 5913393592155198526}
+  showOnce: 1

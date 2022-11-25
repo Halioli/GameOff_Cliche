@@ -5,11 +5,25 @@ using UnityEngine;
 public class InteractDialogue : InteractMaster
 {
     [SerializeField] TutorialMessages tutorialMessages;
+    [SerializeField] bool showOnce = true;
+
+    private bool shownDialogue = false;
 
     public override void DoInteraction(PlayerManager playerManager)
     {
-        playerManager.SetCanMove(false);
+        if (showOnce && !shownDialogue)
+        {
+            playerManager.SetCanMove(false);
 
-        tutorialMessages.SendMessage();
+            tutorialMessages.SendMessage();
+            
+            shownDialogue = true;
+        }
+        else if (!showOnce)
+        {
+            playerManager.SetCanMove(false);
+
+            tutorialMessages.SendMessage();
+        }
     }
 }
