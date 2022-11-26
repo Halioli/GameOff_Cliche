@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] PlayerInventory inventory;
     [SerializeField] PlayerMovement movement;
+    [SerializeField] HUD gameHUD;
 
     private HealthSystem healthSystem; // change
 
@@ -29,6 +30,14 @@ public class PlayerManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.L))
         {
             healthSystem.ReceiveHealth(5);
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            gameHUD.FadeToBalack();
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            gameHUD.FadeToGame();
         }
     }
 

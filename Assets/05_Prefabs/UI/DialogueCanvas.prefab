@@ -67,6 +67,7 @@ MonoBehaviour:
   currentTextNum: 0
   mssgText: {fileID: 3353589539947025308}
   buttonTransform: {fileID: 3353589539873256843}
+  playerManager: {fileID: 0}
 --- !u!82 &3353589539797923533
 AudioSource:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 20, y: -20}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &3353589539873256841
 CanvasRenderer:
@@ -304,8 +305,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Blah blah blah blah blah blah save the world blah blah blah blah blah blah
-    blah rescure blah blah blah legendary blah blah blah blah blah blah blah blah
-    blah blah blah blah blah blah blah, do you understand now?
+    blah rescure blah blah blah blah blah blah blah blah blah blah blah blah blah
+    blah blah blah blah blah blah blah blah blah blah blah blah blah blah legendary
+    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah, do
+    you understand now?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4410fbf37f78cda47a3718ee878f9dd1, type: 2}
   m_sharedMaterial: {fileID: -3677110589572301588, guid: 4410fbf37f78cda47a3718ee878f9dd1, type: 2}
@@ -332,12 +335,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.1
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
-  m_fontSizeMax: 16
+  m_fontSizeMax: 18
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
@@ -408,10 +411,10 @@ RectTransform:
   m_Father: {fileID: 3353589539797923534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: -1300, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3353589540172250086
 CanvasRenderer:
