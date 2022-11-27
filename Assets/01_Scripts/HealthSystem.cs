@@ -13,7 +13,7 @@ public class HealthSystem : MonoBehaviour
     protected bool canBeHealed;
 
     // Private
-    private int health { get; set; }
+    private int health;
 
     void Start()
     {
@@ -23,6 +23,12 @@ public class HealthSystem : MonoBehaviour
     }
 
     public void RestoreHealthToMaxHealth() { health = maxHealth; }
+
+    public int GetMaxHealth() { return maxHealth; }
+
+    public int GetMinHealth() { return minHealth; }
+
+    public int GetCurrentHealth() { return health; }
 
     public void ReceiveDamage(int damageAmount)
     {
