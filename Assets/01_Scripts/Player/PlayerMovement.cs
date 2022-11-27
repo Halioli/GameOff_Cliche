@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    private bool canMove = true;
+    private bool canJump = true;
+
     void Update()
     {
         // Check if grounded
@@ -31,21 +34,29 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
 
         // Movement
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
-
-        move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * speed * Time.deltaTime);
-
-        // Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (canMove)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            x = Input.GetAxis("Horizontal");
+            z = Input.GetAxis("Vertical");
+
+            move = transform.right * x + transform.forward * z;
+
+            controller.Move(move * speed * Time.deltaTime);
+
+            // Jump
+            if (Input.GetButtonDown("Jump") && isGrounded && canJump)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
         }
 
         // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
+
+    public void SetCanMove(bool _value) { canMove = _value; }
+    public bool GetCanMove() { return canMove; }    
+    public void SetCanJump(bool _value) { canJump = _value; }
+    public bool GetCanJump() { return canJump; }
 }
