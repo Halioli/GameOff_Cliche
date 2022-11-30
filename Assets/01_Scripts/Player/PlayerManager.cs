@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] PlayerInventory inventory;
     [SerializeField] PlayerMovement movement;
     [SerializeField] HUD gameHUD;
+    [SerializeField] PauseMenu pauseMenu;
 
     private HealthSystem healthSystem; // change
 
@@ -38,6 +39,10 @@ public class PlayerManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.P))
         {
             gameHUD.FadeToGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.PressedPause();
         }
     }
 
